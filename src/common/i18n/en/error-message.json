@@ -1,0 +1,12 @@
+{
+    "error-user-not-found": "User not found",
+    "error-password-wrong": "Password incorrect",
+    "error-old-password-wrong": "Old password incorrect",
+    "error-user-exist": "User existed",
+    "error-mimetype-invalid": "Mimetype invalid",
+    "error-network-restricted": "Network restricted",
+    "error-unauthorized": "Unauthorized",
+    "common-foreign-key-in-use": "Cannot delete the record because related data exists",
+    "common-foreign-key-not-exist": "Cannot create the record because related data \"{value}\" does not exist",
+    "common-unique-duplicated": "Cannot save because the value \"{value}\" already exists in the system"
+}

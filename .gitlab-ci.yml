@@ -1,0 +1,119 @@
+stages:
+  - build
+  - test
+  - release
+
+variables:
+  CONTAINER_IMAGE_REF: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+  CONTAINER_TAG_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  GIT_DEPTH: 1
+  DOCKER_BUILDKIT: 1
+
+# ---------------------------------------------------------------------------
+# TEMPLATES
+# ---------------------------------------------------------------------------
+.docker_build_template:
+  stage: build
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+  interruptible: true
+
+# ---------------------------------------------------------------------------
+# BUILD STAGE (Chỉ build image cho develop, integration, release và tags)
+# ---------------------------------------------------------------------------
+
+# 0. Develop
+build_develop:
+  extends: .docker_build_template
+  variables:
+    IMAGE_TAG: $CONTAINER_IMAGE_REF
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+  tags:
+    - develop
+
+# 1. Integration (SIT - Protected)
+build_integration:
+  extends: .docker_build_template
+  variables:
+    IMAGE_TAG: $CONTAINER_IMAGE_REF
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME =~ /^integration\/.*/'
+  tags:
+    - develop
+
+# 2. Release (UAT - Protected)
+build_release_branch:
+  extends: .docker_build_template
+  variables:
+    IMAGE_TAG: $CONTAINER_IMAGE_REF
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME =~ /^release\/.*/'
+  tags:
+    - release
+
+# 3. Main (Core - Protected) -> Build khi tạo Tag (PROD)
+build_tag:
+  stage: build
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CONTAINER_RELEASE_IMAGE .
+    - docker tag $CONTAINER_RELEASE_IMAGE $CONTAINER_TAG_IMAGE
+    - docker push $CONTAINER_RELEASE_IMAGE
+    - docker push $CONTAINER_TAG_IMAGE
+  tags:
+    - release
+  interruptible: true
+
+# ---------------------------------------------------------------------------
+# RELEASE STAGE
+# ---------------------------------------------------------------------------
+
+prepare_release:
+  stage: release
+  image: docker:24.0.2-git
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  script:
+    - echo RELEASE_TAG=$CI_COMMIT_TAG >> variables.env
+    - echo '## Changelog' >> CHANGELOG.md
+    - git tag -l -n9 $CI_COMMIT_TAG >> CHANGELOG.md
+    - echo '## Commits' >> CHANGELOG.md 
+    - git log --pretty="- %s (%h)" $(git tag --sort=-creatordate | head -2)...$(git tag --sort=-creatordate | head -1) >> CHANGELOG.md
+    - echo '## Merges' >> CHANGELOG.md 
+    - git log --merges --pretty="- %s (%h)" $(git tag --sort=-creatordate | head -2)...$(git tag --sort=-creatordate | head -1) >> CHANGELOG.md
+    - echo '## AUTHORS' >> CHANGELOG.md
+    - git log --pretty="- %an%n- %cn" $(git tag --sort=-creatordate | head -2)...$(git tag --sort=-creatordate | head -1) | sort | uniq >> CHANGELOG.md
+  artifacts:
+    paths:
+      - CHANGELOG.md
+  tags:
+    - release
+  interruptible: true
+
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  needs:
+    - job: prepare_release
+      artifacts: true
+  artifacts:
+    paths:
+    - CHANGELOG.md
+    expire_in: never
+  script:
+    - echo "Releasing $CI_COMMIT_TAG ..."
+  release:
+    name: $CI_COMMIT_TAG
+    description: CHANGELOG.md
+    tag_name: $CI_COMMIT_TAG 
+  tags:
+    - release
+  interruptible: true

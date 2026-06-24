@@ -1,0 +1,15 @@
+{
+    "user": {
+        "username": "Tên đăng nhập",
+        "password": "Mật khẩu",
+        "ssoId": "SSO ID",
+        "email": "Email",
+        "firstname": "Tên",
+        "lastname": "Họ",
+        "fullname": "Tên đầy đủ",
+        "gender": "Giới tính",
+        "dob": "Ngày sinh",
+        "systemRole": "Vai trò",
+        "createdAt": "Ngày tạo"
+    }
+}

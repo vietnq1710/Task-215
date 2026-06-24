@@ -1,0 +1,15 @@
+{
+    "user": {
+        "username": "Username",
+        "password": "Password",
+        "ssoId": "SSO ID",
+        "email": "Email",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "fullname": "Full name",
+        "gender": "Gender",
+        "dob": "Date of birth",
+        "systemRole": "System role",
+        "createdAt": "Created at"
+    }
+}

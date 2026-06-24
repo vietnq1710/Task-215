@@ -1,0 +1,19 @@
+{
+    "error-user-not-found": "Không tìm thấy người dùng",
+    "error-password-wrong": "Mật khẩu không chính xác",
+    "error-old-password-wrong": "Mật khẩu cũ không chính xác",
+    "error-user-exist": "Người dùng đã tồn tại",
+    "error-mimetype-invalid": "Mimetype không hợp lệ",
+    "error-network-restricted": "Kết nối mạng bị giới hạn",
+    "error-unauthorized": "Xác thực không hợp lệ",
+    "error-forbidden": "Không có quyền truy cập",
+    "error-topic-not-found": "Chủ đề không tồn tại",
+    "error-topic-subscribed": "Bạn đã theo dõi chủ đề {topic}",
+    "error-topic-subscription-limit-exceed": "Bạn đã theo dõi {total} chủ đề, vui lòng bỏ theo dõi các chủ đề cũ trước khi có thể tiếp tục theo dõi chủ đề mới",
+    "error-file-invalid-mimetype": "Định dạng tệp tin không hợp lệ ({mime})",
+    "error-file-not-found": "Không tìm thấy tệp tin",
+    "error-quy-tac-not-found": "Quy tắc sinh mã không tồn tại",
+    "common-foreign-key-in-use": "Không thể xóa bản ghi vì đang tồn tại dữ liệu liên kết",
+    "common-foreign-key-not-exist": "Không thể thêm mới vì dữ liệu liên kết \"{value}\" không tồn tại",
+    "common-unique-duplicated": "Không thể lưu vì giá trị \"{value}\" đã tồn tại trong hệ thống"
+}

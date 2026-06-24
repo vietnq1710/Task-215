@@ -1,0 +1,172 @@
+{
+  "name": "@aisoft/backend",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "bin": {
+    "aisoft": "lib/@aisoft/cli/bin/aisoft.js"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "build-bundle": "npm run prebuild && nest build && javascript-obfuscator ./dist --output ./dist-bundle && cp -r dist-bundle/* dist && rm -rf dist-bundle",
+    "format": "prettier --cache --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix --cache --cache-strategy content --cache-location ./node_modules/.cache/eslint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "aisoft": "npm link"
+  },
+  "dependencies": {
+    "@golevelup/nestjs-modules": "^1.1.2",
+    "@golevelup/nestjs-rabbitmq": "^7.1.2",
+    "@grpc/grpc-js": "^1.14.3",
+    "@grpc/proto-loader": "^0.8.0",
+    "@nestjs/axios": "^4.0.1",
+    "@nestjs/bull": "^11.0.4",
+    "@nestjs/common": "^11.1.16",
+    "@nestjs/config": "^4.0.3",
+    "@nestjs/core": "^11.1.16",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/microservices": "^11.1.16",
+    "@nestjs/mongoose": "^11.0.4",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.1.16",
+    "@nestjs/schedule": "^6.1.1",
+    "@nestjs/sequelize": "^11.0.1",
+    "@nestjs/swagger": "^11.2.6",
+    "@nestjs/terminus": "^11.1.1",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.67.2",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.208.0",
+    "@opentelemetry/instrumentation-nestjs-core": "^0.59.0",
+    "@opentelemetry/sdk-node": "^0.208.0",
+    "@opentelemetry/sdk-trace-base": "^2.2.0",
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.1",
+    "bull": "^4.16.5",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.3",
+    "dotenv": "^17.2.3",
+    "exceljs": "^4.4.0",
+    "file-type": "^21.3.2",
+    "handlebars": "^4.7.8",
+    "ioredis": "^5.8.2",
+    "jose": "^6.1.3",
+    "lodash": "^4.17.21",
+    "minio": "^8.0.6",
+    "moment": "^2.30.1",
+    "mongoose": "^9.0.1",
+    "mongoose-lean-defaults": "^2.3.1",
+    "mongoose-lean-getters": "^2.3.0",
+    "mongoose-lean-virtuals": "^2.1.0",
+    "morgan": "^1.10.1",
+    "nestjs-cls": "^6.2.0",
+    "nestjs-i18n": "^10.6.0",
+    "p-limit": "^7.2.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "protobufjs": "^7.5.4",
+    "reflect-metadata": "^0.2.2",
+    "rimraf": "^6.1.2",
+    "rxjs": "^7.8.2",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3",
+    "sequelize-typescript": "^2.1.6",
+    "sharp": "^0.34.5",
+    "ua-parser-js": "^2.0.7",
+    "uuid": "^13.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@nestjs/cli": "^11.0.16",
+    "@nestjs/schematics": "^11.0.9",
+    "@nestjs/testing": "^11.1.16",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/express": "^5.0.6",
+    "@types/jest": "30.0.0",
+    "@types/lodash": "^4.17.21",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^25.0.2",
+    "@types/node-fetch": "^2.6.13",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/passport-local": "^1.0.38",
+    "@types/supertest": "^6.0.3",
+    "@types/ua-parser-js": "^0.7.39",
+    "@types/uuid": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.50.0",
+    "@typescript-eslint/parser": "^8.50.0",
+    "chalk": "^5.6.2",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
+    "javascript-obfuscator": "^5.1.0",
+    "jest": "30.2.0",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.1.4",
+    "ts-jest": "29.4.6",
+    "ts-loader": "^9.5.4",
+    "ts-morph": "^27.0.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "^5.9.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "moduleNameMapper": {
+      "^@common(.*)$": "<rootDir>/common$1",
+      "^@config(.*)$": "<rootDir>/config$1",
+      "^@module(.*)$": "<rootDir>/modules$1"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run format",
+      "npm run lint"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
+  }
+}
