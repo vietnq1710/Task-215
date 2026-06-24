@@ -1,3 +1,10 @@
+import { Module } from "@nestjs/common";
+import { DatabaseconfigController } from "./controllers/database-config.controller";
+import { DatabaseconfigService } from "./services/database-config.service";
 
-import { DatabaseConfigController } from './database-config/database-config.controller';
-import { DatabaseConfigService } from './database-config/database-config.service';
+@Module({
+    controllers: [DatabaseconfigController],
+    providers: [DatabaseconfigService],
+    exports: [DatabaseconfigService],
+})
+export class DatabaseconfigModule {}
