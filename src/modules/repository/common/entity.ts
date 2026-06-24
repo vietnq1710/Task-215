@@ -15,3 +15,4 @@ export const AUDIT_LOG = "AuditLog";
 
 export const DATA_PARTITION = "DataPartition";
 export const DATA_PARTITION_USER = "DataPartitionUser";
+export const DATABASE_CONFIG = "DatabaseConfigEntity";

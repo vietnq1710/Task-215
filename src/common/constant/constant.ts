@@ -199,3 +199,15 @@ export const getAppUrl = (
         prefix: null,
     };
 };
+
+export enum Status {
+    SUCCESS = "SUCCESS",
+    FAILED = "FAILED",
+    TIMEOUT = "TIMEOUT",
+    EXPIRED = "EXPIRED",
+}
+
+export enum DatabaseType {
+    POSTGRES = "postgres",
+    MONGO = "mongo",
+}
