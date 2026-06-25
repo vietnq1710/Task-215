@@ -14,11 +14,23 @@ import { DatabaseConfigEntity } from "../entities/database-config.entity";
 import { DatabaseconfigService } from "../services/database-config.service";
 import { CreateDatabaseconfigDto } from "../dtos/create-databaseconfig.dto";
 import { UpdateDocument } from "@module/repository/common/base-repository.interface";
+import { create } from "lodash";
+import { UpdateDatabaseconfigDto } from "../dtos/update-databaseconfig.dto";
 
 @Controller("database-config")
 @ApiTags("database-config")
 export class DatabaseconfigController extends BaseControllerFactory<DatabaseConfigEntity>(
     DatabaseConfigEntity,
+    CreateDatabaseconfigDto,
+    UpdateDatabaseconfigDto,
+    null,
+) {
+    constructor(private readonly service: DatabaseconfigService) {
+        super(service);
+    }
+}
+
+/*
     null,
     null,
     null,
@@ -97,4 +109,7 @@ export class DatabaseconfigController extends BaseControllerFactory<DatabaseConf
     async delete(@Param("id") id: string) {
         return this.service.deleteConfig(id);
     }
+        
+
 }
+    */

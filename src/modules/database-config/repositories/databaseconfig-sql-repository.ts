@@ -4,7 +4,6 @@ import { ModelCtor } from "sequelize-typescript";
 import { DatabaseConfigEntity } from "../entities/database-config.entity";
 import { DatabaseConfigModel } from "../models/databaseconfig.models";
 import { DatabaseconfigRepository } from "./databaseconfig-repository.interface";
-
 export class DatabaseconfigSqlRepository
     extends SqlRepository<DatabaseConfigEntity>
     implements DatabaseconfigRepository

@@ -15,7 +15,7 @@ export class DatabaseconfigService extends BaseService<
     ) {
         super(Repo);
     }
-
+    /*
     async creatConfig(dto: CreateDatabaseconfigDto) {
         return this.Repo.create(dto);
     }
@@ -38,4 +38,5 @@ export class DatabaseconfigService extends BaseService<
     async deleteConfig(id: string) {
         return this.Repo.deleteById(id);
     }
+        */
 }

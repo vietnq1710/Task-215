@@ -16,6 +16,7 @@ import { QuyTacMaModule } from "./modules/quy-tac-ma/quy-tac-ma.module";
 import { SettingModule } from "./modules/setting/setting.module";
 import { TopicModule } from "./modules/topic/topic.module";
 import { UserModule } from "./modules/user/user.module";
+import { DatabaseconfigModule } from "@module/database-config/database-config.module";
 
 @Module({
     imports: [
@@ -34,6 +35,7 @@ import { UserModule } from "./modules/user/user.module";
         QuyTacMaModule,
         AuditLogModule,
         DataProcessModule,
+        DatabaseconfigModule,
     ],
     providers: [...DefaultProviders],
     controllers: [AppController],

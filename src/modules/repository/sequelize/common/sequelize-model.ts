@@ -13,6 +13,7 @@ import { SettingModel } from "../model/setting.model";
 import TopicModel from "../model/topic.model";
 import { UserTopicModel } from "../model/user-topic.model";
 import { UserModel } from "../model/user.model";
+import { DatabaseConfigModel } from "@module/database-config/models/databaseconfig.models";
 
 export const SequelizeModel: ModelCtor<Model>[] = [
     UserModel,
@@ -29,4 +30,5 @@ export const SequelizeModel: ModelCtor<Model>[] = [
     AuditLogModel,
     DataPartitionModel,
     DataPartitionUserModel,
+    DatabaseConfigModel,
 ];
