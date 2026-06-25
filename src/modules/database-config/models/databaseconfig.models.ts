@@ -7,24 +7,24 @@ export class DatabaseConfigModel extends Model implements DatabaseConfigEntity {
     @StrObjectId()
     _id: string;
 
-    @Column({ unique: true, allowNull: false })
+    @Column({ allowNull: false })
     name: string;
 
     @Column
     type: DatabaseType;
 
-    @Column
+    @Column({ allowNull: false })
     host: string;
 
-    @Column
+    @Column({ allowNull: false })
     port: number;
 
-    @Column({ unique: true, allowNull: false })
+    @Column({ allowNull: false })
     databaseName: string;
 
-    @Column({ unique: true, allowNull: false })
+    @Column({ allowNull: false })
     username: string;
 
-    @Column({ unique: true, allowNull: false })
+    @Column({ allowNull: false })
     password: string;
 }
