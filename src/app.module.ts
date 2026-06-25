@@ -1,6 +1,6 @@
 import { DefaultModules, DefaultProviders } from "@config/module/config";
 import { AuditLogModule } from "@module/audit-log/audit-log.module";
-import { HealthModule } from "@module/health/health.module";
+//import { HealthModule } from "@module/health/health.module";
 import { IncrementModule } from "@module/increment/increment.module";
 import { RedisModule } from "@module/redis/redis.module";
 import { SsoModule } from "@module/sso/sso.module";
@@ -17,8 +17,8 @@ import { SettingModule } from "./modules/setting/setting.module";
 import { TopicModule } from "./modules/topic/topic.module";
 import { UserModule } from "./modules/user/user.module";
 import { DatabaseconfigModule } from "@module/database-config/database-config.module";
-import { BackupjobModel } from "@module/backup-job/models/backup-job.models";
 import { BackupjobModule } from "@module/backup-job/backup-job.module";
+import { BackuphistoryModule } from "@module/backup-history/backup-history.module";
 
 @Module({
     imports: [
@@ -39,6 +39,7 @@ import { BackupjobModule } from "@module/backup-job/backup-job.module";
         DataProcessModule,
         DatabaseconfigModule,
         BackupjobModule,
+        BackuphistoryModule,
     ],
     providers: [...DefaultProviders],
     controllers: [AppController],
