@@ -149,6 +149,7 @@ export class SequelizeConfigService implements SequelizeOptionsFactory {
             },
             timezone,
             hooks: {
+                /*
                 beforeDefine: (attribute, options) => {
                     attribute.dataPartitionCode = {
                         type: DataType.STRING,
@@ -177,7 +178,7 @@ export class SequelizeConfigService implements SequelizeOptionsFactory {
                     //         { fields: ["dataPartitionCode"] },
                     //     ],
                     // });
-                },
+                }, */
             },
         };
     }
