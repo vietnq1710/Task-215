@@ -17,6 +17,8 @@ import { SettingModule } from "./modules/setting/setting.module";
 import { TopicModule } from "./modules/topic/topic.module";
 import { UserModule } from "./modules/user/user.module";
 import { DatabaseconfigModule } from "@module/database-config/database-config.module";
+import { BackupjobModel } from "@module/backup-job/models/backup-job.models";
+import { BackupjobModule } from "@module/backup-job/backup-job.module";
 
 @Module({
     imports: [
@@ -36,6 +38,7 @@ import { DatabaseconfigModule } from "@module/database-config/database-config.mo
         AuditLogModule,
         DataProcessModule,
         DatabaseconfigModule,
+        BackupjobModule,
     ],
     providers: [...DefaultProviders],
     controllers: [AppController],

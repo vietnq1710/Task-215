@@ -1,20 +1,20 @@
 import { BaseControllerFactory } from "@config/controller/base-controller-factory";
 import {
-    Body,
+    // Body,
     Controller,
-    Get,
-    Post,
-    Put,
-    Delete,
-    Param,
+    //  Get,
+    // Post,
+    // Put,
+    //  Delete,
+    //  Param,
 } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 
 import { DatabaseConfigEntity } from "../entities/database-config.entity";
 import { DatabaseconfigService } from "../services/database-config.service";
 import { CreateDatabaseconfigDto } from "../dtos/create-databaseconfig.dto";
-import { UpdateDocument } from "@module/repository/common/base-repository.interface";
-import { create } from "lodash";
+//import { UpdateDocument } from "@module/repository/common/base-repository.interface";
+//import { create } from "lodash";
 import { UpdateDatabaseconfigDto } from "../dtos/update-databaseconfig.dto";
 
 @Controller("database-config")
