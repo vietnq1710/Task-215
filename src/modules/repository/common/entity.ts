@@ -18,4 +18,4 @@ export const DATA_PARTITION_USER = "DataPartitionUser";
 
 export const DATABASE_CONFIG = "database_config";
 export const BACKUP_JOB = "back_up_job";
-export const BACKUP_HISTORY = "back_up_history";
+export const BACKUP_HISTORY = "backup_history";
