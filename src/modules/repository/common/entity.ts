@@ -16,5 +16,6 @@ export const AUDIT_LOG = "AuditLog";
 export const DATA_PARTITION = "DataPartition";
 export const DATA_PARTITION_USER = "DataPartitionUser";
 
-export const DATABASE_CONFIG = "DatabaseConfigEntity";
-export const BACKUP_JOB = "BackupJobEntity";
+export const DATABASE_CONFIG = "database_config";
+export const BACKUP_JOB = "back_up_job";
+export const BACKUP_HISTORY = "back_up_history";
